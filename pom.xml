@@ -6,26 +6,49 @@
     <groupId>org.etisalat.myEtisalat</groupId>
     <artifactId>inegration-tutorial</artifactId>
     <version>1.0</version>
-    <build>
-        <plugins>
+    <packaging>jar</packaging>
+    <name></name>
+    <url>http://maven.apache.org</url>
+    <profiles>
+        <profile>
+            <id>web</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.18.1</version>
+                        <configuration>
+                            <forkCount>1</forkCount>
+                            <suiteXmlFiles>
+                                <suiteXmlFile>Regression-Web.xml</suiteXmlFile>
+                            </suiteXmlFiles>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>mobile</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.18.1</version>
+                        <configuration>
+                            <forkCount>1</forkCount>
+                            <suiteXmlFiles>
+                                <suiteXmlFile>Regression-Mobile.xml</suiteXmlFile>
+                            </suiteXmlFiles>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
-
-                <configuration>
-                    <forkCount>1</forkCount>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>testNg.xml</suiteXmlFile>
-                    </suiteXmlFiles>
-                </configuration>
-
-
-            </plugin>
-        </plugins>
-    </build>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
